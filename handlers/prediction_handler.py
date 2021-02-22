@@ -4,8 +4,8 @@ import tornado.ioloop
 
 from pathlib import Path
 
-from .modules.model import model
-from .config        import models_config
+from modules.model import model
+from config        import models_config
 
 class PreditionHandler(tornado.web.RequestHandler):
     def initialize(self):
@@ -22,3 +22,6 @@ class PreditionHandler(tornado.web.RequestHandler):
         result   = self.model[model_id].predict(img)
 
         self.write(result)
+
+    def get(self):
+        self.write('hi from /predict')
