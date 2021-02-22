@@ -1,13 +1,11 @@
 import os
 import warnings
+import tornado
 import tornado.web
 import tornado.ioloop
 
-import numpy as np
+from .prediction_handler import PreditionHandler
 
-from PIL import Image
-
-from modules.evaluate import predict、
 
 warnings.filterwarnings('ignore')
 os.environ["CUDA_DEVICE_ORDER"]    = "PCI_BUS_ID"
@@ -18,13 +16,13 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = "3" # tensorflow only
 class MainHandler(tornado.web.RequestHandler):
     def get(self):
         self.write("Hello, world")
+        # self.render("index.html")
 
-    def post(self):
-        self.write("post")
 
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
+        (r"/predict", PreditionHandler)
     ])
 
 

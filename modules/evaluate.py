@@ -43,19 +43,6 @@ LR          = 0.0001
 EPOCHS      = 400
 #label = {"_background_": 0, "Ulceration": 1, "slough tissue": 2, "Re-ep": 3, "Granulation": 4, "Eschar": 5}
 
-def predict(img):
-    metrics = [
-        sm.metrics.IOUScore(threshold=0.5), 
-        sm.metrics.FScore(threshold=0.5), 
-        sm.metrics.Recall(threshold=0.5), 
-        sm.metrics.Precision(threshold=0.5),
-        sm.metrics.Accuracy(threshold=0.5),
-    ]   
-    mask = None
-
-    return mask
-
-
 
 def main():
     dataset = Dataset('./config/', batch_size=BATCH_SIZE)
