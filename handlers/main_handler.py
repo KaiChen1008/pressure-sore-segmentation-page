@@ -14,5 +14,3 @@ class MainHandler(tornado.web.RequestHandler):
         # self.write("Hello, world")
         print('render html')
         self.render("../build/index.html")
-    
-
