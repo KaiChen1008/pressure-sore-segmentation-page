@@ -19,7 +19,8 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = "3" # tensorflow only
 def make_app():
     return tornado.web.Application([
         (r"/", MainHandler),
-        (r"/predict", PreditionHandler)
+        (r"/predict", PreditionHandler),
+        (r"/(.*)", tornado.web.StaticFileHandler, {"path": "build"}),
     ])
 
 

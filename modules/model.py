@@ -7,7 +7,7 @@ from config         import label_config, image_config
 from modules.utils  import mask2rgb
 
 class model():
-    def __init__(self, model_name, model_path):
+    def __init__(self, model_id, model_name, model_path):
         sm.set_framework('tf.keras')
 
         self.model      = tf.keras.models.load_model(model_path, custom_objects={
@@ -21,6 +21,7 @@ class model():
         self.model_name = model_name
         self.label      = label_config
         self.image_size = image_config
+        self.model_id   = model_id
 
     def preprocessing(self, img):
         img = img.resize(self.image_size)
@@ -30,7 +31,7 @@ class model():
         return img
     
     def postprocessing(self, result):
-        result = mask2rgb(result) # np.array
+        result = mask2rgb(result, model_id = self.model_id) # np.array
         result = Image.fromarray(result)
         return result
     
@@ -45,6 +46,6 @@ class model():
         result  = None
         img     = self.preprocessing(img)
         result  = self.model.predict(img)
-        result  = self.postprocessing(img)
+        result  = self.postprocessing(result)
 
         return result

@@ -23,7 +23,8 @@ class PreditionHandler(tornado.web.RequestHandler):
         self.models = []
         for m in models_config:
             self.models.append( model(  model_name= m['model_name'],
-                                        model_path= m['model_path'])
+                                        model_path= m['model_path'],
+                                        model_id  = m['model_id'])
             )
     def set_default_headers(self):
         self.set_header("Access-Control-Allow-Origin",  "*")
