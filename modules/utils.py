@@ -44,5 +44,11 @@ def area_count(slough_prediction, ul_prediction, x=38):
             elif np.all(ul_prediction[i,j] == np.array(label_config[1]['2'])):
                 Area[3] += 1
     percentage = Area[2] / (512*512)
+    granulation_area = int(Area[4] / Area[1] * 100)
+    is_reep = False
+    if Area[3] != 0:
+        is_reep = True
+
+    area = f'{percentage * 6400 * pow(x/76, 2):.2f}'
     
-    return percentage * 6400 * pow(x/76, 2)
+    return area, granulation_area, is_reep

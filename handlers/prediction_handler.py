@@ -62,7 +62,10 @@ class PreditionHandler(tornado.web.RequestHandler):
             # img = f.read()
         # img = base64.b64encode(img).decode('utf-8')
         response = {}
-        response['count'] = f'{area_count(results[0], results[1], x):.2f}'
+        area, granulation, is_reep = area_count(results[0], results[1], x)
+        response['area']        = area
+        response['granulation'] = granulation
+        response['is_reep']     = is_reep
 
 
         for i in range(len(results)):
