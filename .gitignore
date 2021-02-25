@@ -8,9 +8,12 @@
 /models/*
 # testing
 /coverage
-
+/images/*
+images/*
 # production
-/build
+#
+/__pycache__
+
 
 # misc
 .DS_Store
