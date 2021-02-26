@@ -1,5 +1,18 @@
 .App {
   text-align: center;
+  /* background-image: url('./assets/bg-1.jpg'); */
+  background-size: cover;
+  background-position: bottom;
+  transition: 0.4s;
+}
+
+.Title {
+  color: #f6f5f3;
+  /* min-height: 100vh;
+  display: flex;
+  
+  justify-content: left;
+  font-size: calc(10px + 2vmin); */
 }
 
 .App-logo {
@@ -36,4 +49,10 @@
   100% {
     transform: translateY(0px)
   }
+}
+
+
+.navbar-brand {
+  padding: 18px 20px;
+  display: inline-block;
 }

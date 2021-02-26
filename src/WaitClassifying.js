@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function WaitClassifying(props) {
   const classes = useStyles();
-  console.log(props.open)
   return (
     <div>
       <Backdrop className={classes.backdrop} open={props.open}>

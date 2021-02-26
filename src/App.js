@@ -1,62 +1,35 @@
-import React    from 'react';
-import Classify from './Classify'
-
+import React, {Fragment}               from 'react'
+import thunkMiddleware      from 'redux-thunk';
+import loggerMiddleware     from 'redux-logger';
+import {Provider, connect}  from 'react-redux';
+import Container from '@material-ui/core/Container';
+import {createStore, combineReducers, compose, applyMiddleware} from 'redux';
+import Typography from '@material-ui/core/Typography';
+import MainScreen   from './MainScreen'
+import {main}       from './states/MainReducer'
+import Divider from '@material-ui/core/Divider';
 import './App.css';
 
+
+
+const store = createStore(combineReducers({
+    main,
+}), compose(applyMiddleware(thunkMiddleware)))
+
 export default class App extends React.Component {
-  constructor(props) {
-    super(props);
-  } 
+    constructor(props) {
+        super(props);
+    } 
 
-  render(){ 
-    return (
-    <div className="App">
-      <Classify/>
-    </div>
-  )};
-
-
+    render() { 
+		return (
+            <Container fixed className="App">
+                <Typography className='Title'>Online Pressure Sore Diagnosis</Typography>
+                
+                <Provider store={store} >
+                    <MainScreen/>
+                </Provider>
+            </Container>
+		)};
 
 }
-
-
-
-// import React from 'react';
-// import Button from '@material-ui/core/Button';
-// import Dialog from '@material-ui/core/Dialog';
-// import DialogActions from '@material-ui/core/DialogActions';
-// import DialogContent from '@material-ui/core/DialogContent';
-// import DialogContentText from '@material-ui/core/DialogContentText';
-// import DialogTitle from '@material-ui/core/DialogTitle';
-
-// export default function App() {
-//   const [open, setOpen] = React.useState(false);
-
-//   const handleClickOpen = () => {
-//     setOpen(true);
-//   };
-
-//   const handleClose = () => {
-//     setOpen(false);
-//   };
-
-//   return (
-//     <div>
-//       <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-//         Open alert dialog
-//       </Button>
-//       <Dialog
-//         open={open}
-//         onClose={handleClose}
-//         aria-labelledby="alert-dialog-title"
-//         aria-describedby="alert-dialog-description"
-//       >
-//         <DialogActions>
-//           <Button onClick={handleClose} color="primary" autoFocus>
-//             Agree
-//           </Button>
-//         </DialogActions>
-//       </Dialog>
-//     </div>
-//   );
-// }
